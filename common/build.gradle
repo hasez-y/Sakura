@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    viewBinding {
+        enabled = true
+    }
+    compileSdk 29
+
+    defaultConfig {
+        minSdk rootProject.ext.android["minSdkVersion"]
+        targetSdk rootProject.ext.android["targetSdkVersion"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // 阿里路由
+    for (i in 0..<rootProject.ext.dependencies["arouter"].size()) {
+        api rootProject.ext.dependencies["arouter"][i]
+    }
+
+    // base
+    for (i in 0..<rootProject.ext.dependencies["base"].size()) {
+        api rootProject.ext.dependencies["base"][i]
+    }
+
+    // 网络请求
+    for (i in 0..<rootProject.ext.dependencies["network"].size()) {
+        api rootProject.ext.dependencies["network"][i]
+    }
+
+    // gson
+    for (i in 0..<rootProject.ext.dependencies["json"].size()) {
+        api rootProject.ext.dependencies["json"][i]
+    }
+
+
+    api rootProject.ext.dependencies["adapterHelper"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["log_utils"]
+    api rootProject.ext.dependencies["log_interceptor"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["mmkv"]
+
+
+}
