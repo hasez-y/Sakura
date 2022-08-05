@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.ssslzgn.common.base.net.BaseViewModel
 
-abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFragment<VB>() {
+abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFragment<VB>(), View.OnClickListener {
     protected lateinit var mViewModel: VM
     private var lazyLoaded = false
 
@@ -18,22 +18,41 @@ abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
-        observe()
+        observer()
         initView()
         initData()
         setListener()
     }
 
-    open fun setListener() {
-    }
-
-    open fun initData() {
-    }
-
+    /**
+     * 初始化UI界面
+     */
     open fun initView() {
     }
 
-    open fun observe() {
+    /**
+     * 初始化观察者
+     */
+    open fun observer() {
+    }
+
+    /**
+     * 请求数据
+     */
+    open fun initData() {
+    }
+
+    /**
+     * 设置监听
+     */
+    open fun setListener(view: View? = null) {
+    }
+
+    /**
+     * 点击时间处理
+     */
+    override fun onClick(p0: View?) {
+        setListener(p0)
     }
 
     private fun initViewModel() {
