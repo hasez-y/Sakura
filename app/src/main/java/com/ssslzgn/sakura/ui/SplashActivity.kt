@@ -5,6 +5,7 @@ import android.os.CountDownTimer
 import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 import com.ssslzgn.common.base.ui.BaseVmActivity
+import com.ssslzgn.common.config.ARouterPath
 import com.ssslzgn.sakura.databinding.AppActivitySplashBinding
 import com.ssslzgn.sakura.net.SplashViewModel
 
@@ -50,8 +51,8 @@ class SplashActivity : BaseVmActivity<AppActivitySplashBinding, SplashViewModel>
             }
 
             override fun onFinish() {
-                // TODO 通过阿里路由跳转首页
-
+                // 通过阿里路由跳转首页
+                openActivity(ARouterPath.URL_MAIN_AC)
             }
         }
     }

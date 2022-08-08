@@ -5,7 +5,10 @@ package com.ssslzgn.common.config
  */
 object ARouterPath {
 
-    // 首页
+    /**
+     * 首页
+     */
     const val URL_MAIN_AC = "/app/MainActivity"
+
 
 }

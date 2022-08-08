@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
@@ -19,6 +20,13 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     ): View? {
         binding = getViewBinding()
         return mBinding.root
+    }
+
+    /**
+     * 阿里路由跳转
+     */
+    fun openActivity(path: String) {
+        ARouter.getInstance().build(path).navigation()
     }
 
     abstract fun getViewBinding(): VB?
