@@ -16,3 +16,4 @@ rootProject.name = "Sakura"
 include ':app'
 include ':common'
 include ':user'
+include ':home'

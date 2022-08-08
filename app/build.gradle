@@ -13,8 +13,8 @@ android {
 
     defaultConfig {
         applicationId "com.ssslzgn.sakura"
-        minSdk rootProject.ext.android["minSdkVersion"]
-        targetSdk rootProject.ext.android["targetSdkVersion"]
+        minSdk 21
+        targetSdk 29
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
 
