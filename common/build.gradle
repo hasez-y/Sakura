@@ -1,6 +1,13 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+kapt{
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
 }
 
 android {
@@ -61,6 +68,10 @@ dependencies {
     api rootProject.ext.dependencies["log_interceptor"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["statusbarutil"]
+
+    implementation "com.alibaba:arouter-api:1.5.2"
+    kapt "com.alibaba:arouter-compiler:1.5.2"
 
 
 }

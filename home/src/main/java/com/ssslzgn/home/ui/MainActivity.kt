@@ -1,19 +1,39 @@
 package com.ssslzgn.home.ui
 
+import android.graphics.ColorFilter
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieProperty
+import com.airbnb.lottie.SimpleColorFilter
+import com.airbnb.lottie.model.KeyPath
+import com.airbnb.lottie.value.LottieValueCallback
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.LogUtils
+import com.google.android.material.tabs.TabLayout
 import com.ssslzgn.common.base.ui.BaseVmActivity
+import com.ssslzgn.common.config.ARouterPath
 import com.ssslzgn.home.R
 import com.ssslzgn.home.databinding.ActivityMainBinding
 import com.ssslzgn.home.net.view_model.HomeMainViewModel
+import com.ssslzgn.home.ui.fragment.HomeFragment
 
 /**
  * 主页home
  */
+@Route(path = ARouterPath.URL_MAIN_AC)
 class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun initView() {
-        super.initView()
+        LogUtils.d("进入首页")
+        mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
+        mBinding.homeTabLayout.setupWithViewPager(mBinding.homeVP)
     }
 
     override fun observer() {
@@ -26,6 +46,91 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun setListener(view: View?) {
         super.setListener(view)
+        mBinding.homeTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.setSelected()
+                tab?.let { mBinding.homeVP.currentItem = it.position }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.setUnselected()
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+    }
+
+    /**
+     * 选中状态
+     */
+    fun TabLayout.Tab.setSelected() {
+        this.customView?.let {
+            val textView = it.findViewById<TextView>(R.id.tv_tab_text)
+            val selectedColor = ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.skyBlue)
+            textView.setTextColor(selectedColor)
+
+            val imageView = it.findViewById<LottieAnimationView>(R.id.homeTabImg)
+            if (!imageView.isAnimating) {
+                imageView.playAnimation()
+            }
+            setLottieColor(imageView, true)
+        }
+    }
+
+    /**
+     * 未选中状态
+     */
+    fun TabLayout.Tab.setUnselected() {
+        this.customView?.let {
+            val textView = it.findViewById<TextView>(R.id.tv_tab_text)
+            val unselectedColor = ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.black)
+            textView.setTextColor(unselectedColor)
+
+            val imageView = it.findViewById<LottieAnimationView>(R.id.homeTabImg)
+            if (imageView.isAnimating) {
+                imageView.cancelAnimation()
+                imageView.progress = 0f // 还原初始状态
+            }
+            setLottieColor(imageView, false)
+        }
+    }
+
+    /**
+     * set lottie icon color
+     */
+    private fun setLottieColor(imageView: LottieAnimationView?, isSelected: Boolean) {
+        imageView?.let {
+            val color = if (isSelected) com.ssslzgn.common.R.color.skyBlue else com.ssslzgn.common.R.color.black
+            val csl = AppCompatResources.getColorStateList(this, color)
+            val filter = SimpleColorFilter(csl.defaultColor)
+            val keyPath = KeyPath("**")
+            val callback = LottieValueCallback<ColorFilter>(filter)
+            it.addValueCallback(keyPath, LottieProperty.COLOR_FILTER, callback)
+        }
+    }
+
+    private inner class SimpleFragmentPagerAdapter constructor(fm: FragmentManager) :
+        FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+        private val tabTitles = arrayOf("Android", "Kotlin", "Flutter")
+        private val fragment = arrayOf(HomeFragment(), HomeFragment(), HomeFragment())
+
+        override fun getItem(position: Int): Fragment {
+            return fragment[position]
+        }
+
+        override fun getCount(): Int {
+            return fragment.size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence {
+            return tabTitles[position]
+        }
     }
 
     override fun getViewBinding(): ActivityMainBinding {

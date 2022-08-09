@@ -8,7 +8,7 @@ object ARouterPath {
     /**
      * 首页
      */
-    const val URL_MAIN_AC = "/app/MainActivity"
+    const val URL_MAIN_AC = "/app/HomeActivity"
 
 
 }
