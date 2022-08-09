@@ -9,13 +9,14 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/homeVP"
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/homeTabLayout" />
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_below="@+id/homeVP"
         android:id="@+id/homeTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:tabIndicatorColor="@color/white"
         app:tabMaxWidth="200dp"

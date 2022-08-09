@@ -11,7 +11,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/homeTabImg"
-        app:lottie_rawRes="@raw/home_edited"/>
+        />
 
     <TextView
         android:id="@+id/tv_tab_text"

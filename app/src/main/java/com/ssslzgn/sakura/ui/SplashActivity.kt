@@ -19,7 +19,7 @@ import com.ssslzgn.sakura.net.SplashViewModel
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseVmActivity<AppActivitySplashBinding, SplashViewModel>() {
 
-    private val millis = 200L
+    private val millis = 2000L
 
     override fun initView() {
         super.initView()
@@ -51,7 +51,7 @@ class SplashActivity : BaseVmActivity<AppActivitySplashBinding, SplashViewModel>
     }
 
     private fun goMainDelay() {
-        object : CountDownTimer(millis, 100) {
+        object : CountDownTimer(millis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // TODO 更新UI
 

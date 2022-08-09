@@ -1,7 +1,9 @@
 package com.ssslzgn.home.ui
 
+import android.graphics.Color
 import android.graphics.ColorFilter
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -32,8 +34,22 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun initView() {
         LogUtils.d("进入首页")
-        mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
+//        mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
+
+        val animMap = mapOf("主页" to R.raw.stars, "资源" to R.raw.stars, "我的" to R.raw.stars)
+        animMap.keys.forEach { s ->
+            val tab = mBinding.homeTabLayout.newTab()
+            val view = LayoutInflater.from(this).inflate(R.layout.home_tab_item, null)
+            val imageView = view.findViewById<LottieAnimationView>(R.id.homeTabImg)
+            val textView = view.findViewById<TextView>(R.id.tv_tab_text)
+            imageView.setAnimation(animMap[s]!!)
+            imageView.setColorFilter(Color.BLUE)
+            textView.text = s
+            tab.customView = view
+            mBinding.homeTabLayout.addTab(tab)
+        }
         mBinding.homeTabLayout.setupWithViewPager(mBinding.homeVP)
+
     }
 
     override fun observer() {
@@ -46,7 +62,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun setListener(view: View?) {
         super.setListener(view)
-        mBinding.homeTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        mBinding.homeTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.setSelected()
                 tab?.let { mBinding.homeVP.currentItem = it.position }
@@ -58,7 +74,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -71,7 +87,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
     fun TabLayout.Tab.setSelected() {
         this.customView?.let {
             val textView = it.findViewById<TextView>(R.id.tv_tab_text)
-            val selectedColor = ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.skyBlue)
+            val selectedColor =
+                ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.skyBlue)
             textView.setTextColor(selectedColor)
 
             val imageView = it.findViewById<LottieAnimationView>(R.id.homeTabImg)
@@ -88,7 +105,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
     fun TabLayout.Tab.setUnselected() {
         this.customView?.let {
             val textView = it.findViewById<TextView>(R.id.tv_tab_text)
-            val unselectedColor = ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.black)
+            val unselectedColor =
+                ContextCompat.getColor(this@MainActivity, com.ssslzgn.common.R.color.black)
             textView.setTextColor(unselectedColor)
 
             val imageView = it.findViewById<LottieAnimationView>(R.id.homeTabImg)
@@ -105,7 +123,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
      */
     private fun setLottieColor(imageView: LottieAnimationView?, isSelected: Boolean) {
         imageView?.let {
-            val color = if (isSelected) com.ssslzgn.common.R.color.skyBlue else com.ssslzgn.common.R.color.black
+            val color =
+                if (isSelected) com.ssslzgn.common.R.color.skyBlue else com.ssslzgn.common.R.color.black
             val csl = AppCompatResources.getColorStateList(this, color)
             val filter = SimpleColorFilter(csl.defaultColor)
             val keyPath = KeyPath("**")
@@ -114,7 +133,10 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         }
     }
 
-    private inner class SimpleFragmentPagerAdapter constructor(fm: FragmentManager) :
+    private inner class SimpleFragmentPagerAdapter constructor(
+        fm: FragmentManager,
+        tabTitles: MutableCollection<String>? = null
+    ) :
         FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         private val tabTitles = arrayOf("Android", "Kotlin", "Flutter")
