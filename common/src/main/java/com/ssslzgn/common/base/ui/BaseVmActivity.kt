@@ -48,10 +48,9 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : BaseActivi
     }
 
     /**
-     * 点击时间处理
+     * 点击事件处理
      */
-    override fun onClick(p0: View?) {
-        setListener(p0)
+    override fun onClick(v: View?) {
     }
 
     private fun initViewModel() {

@@ -18,12 +18,15 @@ import com.airbnb.lottie.value.LottieValueCallback
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.tabs.TabLayout
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.enums.PopupPosition
 import com.ssslzgn.common.base.ui.BaseVmActivity
 import com.ssslzgn.common.config.ARouterPath
 import com.ssslzgn.home.R
 import com.ssslzgn.home.databinding.ActivityMainBinding
 import com.ssslzgn.home.net.view_model.HomeMainViewModel
 import com.ssslzgn.home.ui.fragment.HomeFragment
+import com.ssslzgn.home.weight.HomeLeftPop
 
 /**
  * 主页home
@@ -35,7 +38,6 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         LogUtils.d("进入首页")
         // 初始化底部导航
         initBottomTab()
-
     }
 
     override fun observer() {
@@ -63,9 +65,24 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
-
         })
+        // 头像点击事件
+        mBinding.homeAvatar.setOnClickListener(this)
 
+
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            // 头像点击事件
+            mBinding.homeAvatar -> {
+                // 弹窗
+                XPopup.Builder(this)
+                    .popupPosition(PopupPosition.Left)
+                    .asCustom(HomeLeftPop(this))
+                    .show()
+            }
+        }
     }
 
     /**
