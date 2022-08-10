@@ -163,6 +163,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
             textView.text = s
             tab!!.customView = view
         }
+        // 默认展示首页Fragment
+        mBinding.homeTabLayout.getTabAt(0)?.setSelected()
     }
 
     override fun getViewBinding(): ActivityMainBinding {
