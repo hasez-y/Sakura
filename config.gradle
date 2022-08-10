@@ -58,6 +58,10 @@ ext {
             // 动画库
             lottie         : "com.airbnb.android:lottie:5.0.1",
             // 沉浸式状态栏
-            statusbarutil  : 'com.jaeger.statusbarutil:library:1.5.1'
+            statusbarutil  : 'com.jaeger.statusbarutil:library:1.5.1',
+            // 弹窗框架
+            XPopup         : 'com.github.li-xiaojun:XPopup:2.8.11',
+            // 今日头条屏幕适配
+            AndroidAutoSize: 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
     ]
 }

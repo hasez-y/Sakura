@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/homeTopBar"
+        android:background="@color/skyBlue"
+        >
+
+
+
+    </RelativeLayout>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/homeVP"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/homeTabLayout" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/homeTabLayout"
+        android:layout_below="@+id/homeTopBar" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/homeTabLayout"

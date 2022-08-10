@@ -69,6 +69,8 @@ dependencies {
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["mmkv"]
     api rootProject.ext.dependencies["statusbarutil"]
+    api rootProject.ext.dependencies["XPopup"]
+    api rootProject.ext.dependencies["AndroidAutoSize"]
 
     implementation "com.alibaba:arouter-api:1.5.2"
     kapt "com.alibaba:arouter-compiler:1.5.2"

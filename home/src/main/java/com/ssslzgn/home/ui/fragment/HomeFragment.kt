@@ -15,7 +15,6 @@ import com.ssslzgn.home.net.view_model.HomeFragmentViewModel
 class HomeFragment :BaseVMFragment<FragmentHomeBinding, HomeFragmentViewModel>() {
 
 
-
     override fun getViewBinding(): FragmentHomeBinding? {
         return FragmentHomeBinding.inflate(layoutInflater)
     }
