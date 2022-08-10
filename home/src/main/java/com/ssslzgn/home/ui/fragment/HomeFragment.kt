@@ -14,6 +14,21 @@ import com.ssslzgn.home.net.view_model.HomeFragmentViewModel
 
 class HomeFragment :BaseVMFragment<FragmentHomeBinding, HomeFragmentViewModel>() {
 
+    override fun initView() {
+
+    }
+
+    override fun observer() {
+        super.observer()
+    }
+
+    override fun initData() {
+        super.initData()
+    }
+
+    override fun setListener(view: View?) {
+        super.setListener(view)
+    }
 
     override fun getViewBinding(): FragmentHomeBinding? {
         return FragmentHomeBinding.inflate(layoutInflater)

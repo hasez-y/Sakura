@@ -11,7 +11,14 @@
         android:layout_height="50dp"
         android:id="@+id/homeTopBar"
         android:background="@color/skyBlue"
+        android:paddingHorizontal="10dp"
         >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="40dp"/>
 
 
 

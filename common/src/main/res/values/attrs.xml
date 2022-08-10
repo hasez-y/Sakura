@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 有边框和背景的TextView -->
+    <declare-styleable name="RoundTextView">
+        <!--        边框线宽-->
+        <attr name="tx_stroke_width" format="dimension" />
+        <!--        边框颜色，如果不设置边框线宽，不起作用-->
+        <attr name="tx_stroke_color" format="reference|color" />
+        <!--        不可点击颜色-->
+        <attr name="tx_bg_enable_false_Color" format="reference|color" />
+        <!--        背景颜色-->
+        <attr name="tx_background_color" format="reference|color" />
+        <!--        按下背景颜色-->
+        <attr name="tx_bg_pressed_color" format="reference|color" />
+        <!--        边框颜色是否跟随文字颜色,边框要设置宽度-->
+        <attr name="tx_follow_textColor" format="boolean" />
+        <!--        统一圆角，如果设置了，四方位圆角不起作用，如果想左右弧形，dp值大于当前高度1/2即可-->
+        <attr name="tx_radius" format="dimension" />
+        <!--        左上圆角-->
+        <attr name="tx_topLeftRadius" format="dimension" />
+        <!--        右上圆角-->
+        <attr name="tx_topRightRadius" format="dimension" />
+        <!--        右下圆角-->
+        <attr name="tx_bottomRightRadius" format="dimension" />
+        <!--        左下圆角-->
+        <attr name="tx_bottomLeftRadius" format="dimension" />
+    </declare-styleable>
+
+</resources>

@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 import com.ssslzgn.common.base.net.BaseViewModel
 
 abstract class BaseVMFragment<VB : ViewBinding, VM : BaseViewModel> : BaseFragment<VB>(), View.OnClickListener {
-    protected lateinit var mViewModel: VM
+    private lateinit var mViewModel: VM
     private var lazyLoaded = false
 
     //分页参数
