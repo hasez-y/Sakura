@@ -60,6 +60,7 @@ class SplashActivity : BaseVmActivity<AppActivitySplashBinding, SplashViewModel>
             override fun onFinish() {
                 // 通过阿里路由跳转首页
                 openActivity(ARouterPath.URL_MAIN_AC)
+                finish()
                 LogUtils.d("跳转Home")
             }
         }.start()

@@ -35,6 +35,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         LogUtils.d("进入首页")
         // 初始化底部导航
         initBottomTab()
+
     }
 
     override fun observer() {

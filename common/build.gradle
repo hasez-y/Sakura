@@ -14,10 +14,10 @@ android {
     viewBinding {
         enabled = true
     }
-    compileSdk 31
+    compileSdk 29
 
     defaultConfig {
-        minSdk 21
+        minSdk 23
         targetSdk 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

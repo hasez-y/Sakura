@@ -3,4 +3,5 @@
     <color name="black">#000000</color>
     <color name="skyBlue">#12D8E3</color>
     <color name="white">#FFFFFF</color>
+    <color name="textInput">#54D4D4D4</color>
 </resources>

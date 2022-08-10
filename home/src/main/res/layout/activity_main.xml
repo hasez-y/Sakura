@@ -7,20 +7,36 @@
     tools:context=".ui.MainActivity">
 
     <RelativeLayout
+        android:id="@+id/homeTopBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/homeTopBar"
-        android:background="@color/skyBlue"
-        android:paddingHorizontal="10dp"
         >
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/homeAvatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            app:cardCornerRadius="40dp"/>
+            android:layout_marginStart="13dp"
+            app:cardCornerRadius="40dp" />
 
+        <com.ssslzgn.common.base.widget.RoundTextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_toEndOf="@+id/homeAvatar"
+            android:layout_toStartOf="@+id/homeTopRight"
+            app:tx_background_color="@color/textInput"
+            app:tx_radius="20dp" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/homeTopRight"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"/>
 
     </RelativeLayout>
 

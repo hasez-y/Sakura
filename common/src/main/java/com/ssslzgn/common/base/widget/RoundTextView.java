@@ -22,9 +22,7 @@ import com.ssslzgn.common.R;
 
 /**
  * 自定义圆角、点击TextView
- * Created by DNJ on 2019/6/1.
  */
-
 public class RoundTextView extends AppCompatTextView {
 
     private int strokeWidth;    // 边框线宽
