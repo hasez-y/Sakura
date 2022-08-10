@@ -2,7 +2,6 @@ package com.ssslzgn.home.ui
 
 import android.graphics.Color
 import android.graphics.ColorFilter
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -34,21 +33,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun initView() {
         LogUtils.d("进入首页")
-//        mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
-
-        val animMap = mapOf("主页" to R.raw.stars, "资源" to R.raw.stars, "我的" to R.raw.stars)
-        animMap.keys.forEach { s ->
-            val tab = mBinding.homeTabLayout.newTab()
-            val view = LayoutInflater.from(this).inflate(R.layout.home_tab_item, null)
-            val imageView = view.findViewById<LottieAnimationView>(R.id.homeTabImg)
-            val textView = view.findViewById<TextView>(R.id.tv_tab_text)
-            imageView.setAnimation(animMap[s]!!)
-            imageView.setColorFilter(Color.BLUE)
-            textView.text = s
-            tab.customView = view
-            mBinding.homeTabLayout.addTab(tab)
-        }
-        mBinding.homeTabLayout.setupWithViewPager(mBinding.homeVP)
+        // 初始化底部导航
+        initBottomTab()
 
     }
 
@@ -152,6 +138,23 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
         override fun getPageTitle(position: Int): CharSequence {
             return tabTitles[position]
+        }
+    }
+
+    private fun initBottomTab() {
+        mBinding.homeTabLayout.setupWithViewPager(mBinding.homeVP)
+        mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
+        val animMap = mapOf("主页" to R.raw.stars, "资源" to R.raw.stars, "我的" to R.raw.stars)
+        var count = 0
+        animMap.keys.forEach { s ->
+            val tab = mBinding.homeTabLayout.getTabAt(count++)
+            val view = LayoutInflater.from(this).inflate(R.layout.home_tab_item, null)
+            val imageView = view.findViewById<LottieAnimationView>(R.id.homeTabImg)
+            val textView = view.findViewById<TextView>(R.id.tv_tab_text)
+            imageView.setAnimation(animMap[s]!!)
+            imageView.setColorFilter(Color.BLUE)
+            textView.text = s
+            tab!!.customView = view
         }
     }
 
