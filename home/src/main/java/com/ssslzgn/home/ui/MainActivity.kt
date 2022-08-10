@@ -47,6 +47,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun setListener(view: View?) {
         super.setListener(view)
+        // 底部tab点击事件
         mBinding.homeTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.setSelected()
@@ -104,7 +105,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
     }
 
     /**
-     * set lottie icon color
+     * 设置 lottie icon 颜色
      */
     private fun setLottieColor(imageView: LottieAnimationView?, isSelected: Boolean) {
         imageView?.let {
@@ -118,6 +119,9 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         }
     }
 
+    /**
+     * 简单ViewPager适配器
+     */
     private inner class SimpleFragmentPagerAdapter constructor(
         fm: FragmentManager,
         tabTitles: MutableCollection<String>? = null
@@ -140,6 +144,9 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         }
     }
 
+    /**
+     * 初始化底部tab栏
+     */
     private fun initBottomTab() {
         mBinding.homeTabLayout.setupWithViewPager(mBinding.homeVP)
         mBinding.homeVP.adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
