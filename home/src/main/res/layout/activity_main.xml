@@ -57,6 +57,7 @@
         app:tabMaxWidth="200dp"
         app:tabMinWidth="100dp"
         app:tabMode="fixed"
+        app:tabRippleColor="@color/skyBlueSecond"
         app:tabSelectedTextColor="@color/skyBlue"
         app:tabTextColor="@color/black" />
 
