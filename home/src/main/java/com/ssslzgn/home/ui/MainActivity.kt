@@ -25,6 +25,7 @@ import com.ssslzgn.common.config.ARouterPath
 import com.ssslzgn.home.R
 import com.ssslzgn.home.databinding.ActivityMainBinding
 import com.ssslzgn.home.net.view_model.HomeMainViewModel
+import com.ssslzgn.home.ui.fragment.BlankFragment
 import com.ssslzgn.home.ui.fragment.HomeFragment
 import com.ssslzgn.home.weight.HomeLeftPop
 
@@ -147,7 +148,11 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         private val tabTitles = arrayOf("Android", "Kotlin", "Flutter")
-        private val fragment = arrayOf(HomeFragment(), HomeFragment(), HomeFragment())
+        private val fragment = arrayOf(
+            HomeFragment(this@MainActivity),
+            BlankFragment(),
+            BlankFragment()
+        )
 
         override fun getItem(position: Int): Fragment {
             return fragment[position]

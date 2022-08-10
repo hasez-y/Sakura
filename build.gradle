@@ -10,6 +10,8 @@ buildscript {
         //友盟
         maven { url 'https://repo1.maven.org/maven2/' }
         maven { url "https://jitpack.io" }
+        // banner
+        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
     }
     dependencies {
         //classpath 'com.android.tools.build:gradle:4.2.2'

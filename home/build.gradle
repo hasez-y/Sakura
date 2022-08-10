@@ -45,5 +45,6 @@ dependencies {
     api rootProject.ext.dependencies["lottie"]
     implementation "com.alibaba:arouter-api:1.5.2"
     kapt "com.alibaba:arouter-compiler:1.5.2"
+    api rootProject.ext.dependencies['banner']
 
 }

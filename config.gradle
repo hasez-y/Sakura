@@ -62,6 +62,8 @@ ext {
             // 弹窗框架
             XPopup         : 'com.github.li-xiaojun:XPopup:2.8.11',
             // 今日头条屏幕适配
-            AndroidAutoSize: 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+            AndroidAutoSize: 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1',
+            // Banner轮播图
+            banner         : 'io.github.youth5201314:banner:2.2.2'
     ]
 }

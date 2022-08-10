@@ -62,6 +62,8 @@
 
   Lottie 是 [Airbnb](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fairbnb) 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 [Adobe After Effects](https://link.juejin.cn?target=https%3A%2F%2Fwww.adobe.com%2Fcn%2Fproducts%2Faftereffects.html) 设计出漂亮的动画之后，使用 `Lottic` 提供的 [Bodymovin](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fairbnb%2Flottie-web) 插件将设计好的动画导出成 JSON 格式，就可以直接运用在 `iOS`、`Android`、`Web` 和 `React Native`之上，无需其他额外操作。
 
+  https://lottiefiles.com/
+
 - 犸良
 
   https://design.alipay.com/emotion/
@@ -70,6 +72,9 @@
 
 - CountDownTimer 计时器
 
+- Banner轮播图
+
+  https://github.com/youth5201314/banner
 
 
 ## ps

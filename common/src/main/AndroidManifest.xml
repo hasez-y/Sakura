@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ssslzgn.common">
 
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
         <!--今日头条屏幕适配-->
