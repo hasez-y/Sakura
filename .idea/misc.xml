@@ -8,8 +8,11 @@
         <entry key="..\:/Android/Project/Sakura/app/src/main/res/layout/activity_test_activty.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/Project/Sakura/app/src/main/res/layout/app_activity_splash.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/activity_main.xml" value="0.29739583333333336" />
+        <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/fragment_blank.xml" value="0.258230012825994" />
         <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/fragment_home.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/home_left_popup.xml" value="0.25" />
+        <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/home_rec_list_item.xml" value="0.1" />
+        <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/home_res_list_item.xml" value="0.2573749465583583" />
         <entry key="..\:/Android/Project/Sakura/home/src/main/res/layout/home_tab_item.xml" value="1.1" />
       </map>
     </option>

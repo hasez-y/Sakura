@@ -36,7 +36,6 @@ import com.ssslzgn.home.weight.HomeLeftPop
 class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
 
     override fun initView() {
-        LogUtils.d("进入首页")
         // 初始化底部导航
         initBottomTab()
     }
@@ -187,6 +186,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, HomeMainViewModel>() {
         }
         // 默认展示首页Fragment
         mBinding.homeTabLayout.getTabAt(0)?.setSelected()
+
     }
 
     override fun getViewBinding(): ActivityMainBinding {

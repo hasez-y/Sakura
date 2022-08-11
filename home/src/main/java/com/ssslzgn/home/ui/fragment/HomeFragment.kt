@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssslzgn.common.base.ui.BaseVMFragment
 import com.ssslzgn.home.R
 import com.ssslzgn.home.adapter.HomeBannerAdapter
+import com.ssslzgn.home.adapter.HomeListAdapter
 import com.ssslzgn.home.databinding.ActivityMainBinding
 import com.ssslzgn.home.databinding.FragmentHomeBinding
 import com.ssslzgn.home.gson.BannerData
+import com.ssslzgn.home.gson.HomeListBean
 import com.ssslzgn.home.net.view_model.HomeFragmentViewModel
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
@@ -29,6 +32,11 @@ class HomeFragment(context: Context) :
      * 测试图片
      */
     private var testImgUrl = "https://iknow-pic.cdn.bcebos.com/622762d0f703918fbcbf079e523d269759eec473"
+
+    /**
+     * 主页列表数据适配器
+     */
+    private lateinit var listAdapter: HomeListAdapter
 
     override fun initView() {
         // 初始化轮播图
@@ -80,7 +88,12 @@ class HomeFragment(context: Context) :
      * 初始化主页数据列表
      */
     private fun initHomeRec() {
-        mBinding.homeRec.layoutManager = LinearLayoutManager(context)
+        listAdapter = HomeListAdapter(mutableListOf())
+        mBinding.homeRec.adapter = listAdapter
+        mBinding.homeRec.layoutManager = LinearLayoutManager(context).apply { orientation = LinearLayoutManager.VERTICAL }
+        for (index in 0 until 10) {
+            listAdapter.addData(HomeListBean("文章标题", "简介"))
+        }
     }
 
     override fun getViewBinding(): FragmentHomeBinding? {
